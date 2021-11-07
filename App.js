@@ -1,5 +1,6 @@
 import React from "react"
-import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Keyboard, ScrollView, SafeAreaView  } from "react-native"
+import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput,
+   TouchableOpacity, Keyboard, ScrollView, SafeAreaView, FlatList  } from "react-native"
 import Tasks from "./components/Tasks"
 import { useState } from "react"
 
@@ -29,11 +30,18 @@ const App = () => {
         <View style={styles.tasksWrapper}>
           <Text style={styles.textTitle}>My To Do List...</Text>
           <View style={styles.items}>
-            {
-              taskItems.map((item) => {
-                return <Tasks text={item} number={taskNumber}/>
-              })
-            }
+           
+            <FlatList
+              data={taskItems}
+              numColumns={2}
+              columnWrapperStyle={{
+                justifyContent: 'space-between',
+               // marginBottom:10
+              }} 
+              renderItem={({ item }) => (
+                 <Tasks text={item} number={taskNumber}/>          
+              )}
+            />
             
           </View>
         </View>
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   textTitle: {
-      fontSize: 24,
+    fontSize: 24,
     fontWeight: 'bold',
     color: "white"
   },
