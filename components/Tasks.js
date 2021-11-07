@@ -1,15 +1,18 @@
 import React from "react"
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 
-const Tasks = () => {
+const Tasks = (props) => {
     return (
+            <TouchableOpacity>
         <View style={styles.item}>
+        
             <View style={styles.itemLeft}>
-                <TouchableOpacity style={styles.square}></TouchableOpacity>
-                <Text style={styles.text}>Tasks</Text>
+                
+                <Text style={styles.text}>{props.number} {props.text}</Text>
             </View>
-            <View style={styles.circle}></View>
+          
         </View>
+          </TouchableOpacity>
     )
 }
 
@@ -20,6 +23,7 @@ const styles = StyleSheet.create({
         padding: 20,
         justifyContent: "space-between",
         flexDirection: "row",
+        felx: 0.5,
         alignItems: "center",
         marginBottom: 20,
         width: "50%",
@@ -29,22 +33,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         alignItem: "center"
-    },
-    square: {
-        backgroundColor: "#678983",
-        borderRadius: 5,
-        width: 20,
-        height: 20,
-        opacity: 0.4,
-        marginRight: 20
-    },
-    circle: {
-        borderColor: "#181D31",
-        borderRadius: 5,
-        borderWidth:2,
-        width: 10,
-        height: 10,
-        opacity: 0.6
     },
     text: {
         color: "white",
